@@ -1,5 +1,8 @@
 <script setup>
 import { inject } from 'vue'
+defineProps({
+  totalPrice: Number
+})
 
 const { openCart } = inject('cart')
 </script>
@@ -15,7 +18,7 @@ const { openCart } = inject('cart')
     <ul class="flex items-center gap-10">
       <li @click="openCart" class="flex items-center gap-3 cursor-pointer">
         <img src="/cart.svg" alt="Cart" />
-        <b>1111 usd</b>
+        <b>{{ totalPrice }} $</b>
       </li>
       <li class="flex items-center gap-3 cursor-pointer">
         <img src="/favorite.svg" alt="Favorite" />

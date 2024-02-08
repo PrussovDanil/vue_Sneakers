@@ -3,12 +3,23 @@ import { onMounted, reactive, ref, watch } from 'vue'
 import CardList from '../components/CardList.vue'
 import axios from 'axios'
 import debounce from 'lodash.debounce'
+import { inject } from 'vue'
 const API_KEY = import.meta.env.VITE_MOKKY_API_KEY
 const sneakers = ref([])
 const filters = reactive({
   sortBy: 'title',
   searchQuery: ''
 })
+
+const { addToCart, deleteFromCart } = inject('cart')
+
+const onClickAddPlus = (item) => {
+  if (!item.isAdded) {
+    addToCart(item)
+  } else {
+    deleteFromCart(item)
+  }
+}
 
 const onChangeSelect = (event) => {
   filters.sortBy = event.target.value
@@ -108,6 +119,6 @@ watch(filters, fetchSneakers)
     </div>
   </div>
   <div class="mt-10">
-    <CardList :sneakers="sneakers" @add-to-favorite="addToFavorite" />
+    <CardList :sneakers="sneakers" @add-to-favorite="addToFavorite" @add-to-cart="onClickAddPlus" />
   </div>
 </template>
