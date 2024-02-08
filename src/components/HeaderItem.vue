@@ -1,3 +1,8 @@
+<script setup>
+import { inject } from 'vue'
+
+const { openCart } = inject('cart')
+</script>
 <template>
   <header class="flex justify-between border-b border-slate-200 px-10 py-8">
     <div class="flex items-center gap-4">
@@ -8,7 +13,7 @@
       </div>
     </div>
     <ul class="flex items-center gap-10">
-      <li class="flex items-center gap-3 cursor-pointer">
+      <li @click="openCart" class="flex items-center gap-3 cursor-pointer">
         <img src="/cart.svg" alt="Cart" />
         <b>1111 usd</b>
       </li>
