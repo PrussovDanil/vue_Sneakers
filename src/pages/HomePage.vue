@@ -55,7 +55,7 @@ const fetchFavorites = async () => {
     const { data: favorites } = await axios.get(`${API_KEY}/favorites`)
 
     sneakers.value = sneakers.value.map((item) => {
-      const favorite = favorites.find((favorites) => favorites.id === item.id)
+      const favorite = favorites.find((favorite) => favorite.item_id === item.id)
 
       if (!favorite) {
         return item

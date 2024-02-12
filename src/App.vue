@@ -41,7 +41,7 @@ provide('cart', { closeCart, openCart, addToCart, deleteFromCart, cartItems })
   <div class="bg-white w-4/5 m-auto rounded-xl shadow-xl mt-14">
     <HeaderItem :total-price="totalPrice" />
     <div class="p-10">
-      <HomePage />
+      <router-view></router-view>
     </div>
   </div>
 </template>

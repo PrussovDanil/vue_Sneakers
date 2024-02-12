@@ -16,4 +16,3 @@ const { cartItems, deleteFromCart } = inject('cart')
     />
   </div>
 </template>
-+
